@@ -25,7 +25,7 @@ async def help(ctx):
         colour = discord.Colour.orange()
     )
 
-    embed.set_author(name='Help')
+    embed.set_author(name='Help') #List of commands
     embed.add_field(name='<hello', value='Says hi', inline=False)
 
     await author.send(embed=embed)
