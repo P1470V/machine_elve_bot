@@ -22,6 +22,4 @@ async def hello(ctx):
 async def help(ctx):
     await ctx.send(help_file.read())
 
-
-
 client.run(bot_token)
