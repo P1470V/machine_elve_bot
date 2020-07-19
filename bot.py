@@ -19,7 +19,7 @@ async def hello(ctx):
 #Help command that will list all of the available commands
 @client.command(pass_context=True)
 async def help(ctx):
-    author = ctx.messege.author
+    author = ctx.message.author
 
     embed = discord.Embed(
         colour = discord.Colour.orange()
@@ -28,6 +28,6 @@ async def help(ctx):
     embed.set_author(name='Help')
     embed.add_field(name='<hello', value='Says hi', inline=False)
 
-    await client.send_messege(author, embed=embed)
+    await author.send(embed=embed)
 
 client.run(bot_token)
