@@ -27,7 +27,23 @@ async def help(ctx):
 
     embed.set_author(name='Help') #List of commands
     embed.add_field(name='<hello', value='Says hi', inline=False)
+    embed.add_field(name='<join', value='Joins vc', inline=False)
+    embed.add_field(name='<hello', value='Leaves vc', inline=False)
 
     await author.send(embed=embed)
+
+#Command to join vc
+@client.command(pass_context=True)
+async def join(ctx):
+    channel = ctx.message.author.voice.channel
+    await channel.connect()
+
+#command to leave vc
+@client.command(pass_context=True)
+async def leave(ctx):
+    if ctx.message.author.voice:
+        channel = ctx.message.author.voice.channel
+        server = ctx.message.guild.voice_client
+        await server.disconnect()
 
 client.run(bot_token)
