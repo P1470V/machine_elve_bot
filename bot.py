@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 
-help_file = open("help.txt", "r")
 bot_token = input("Bot Token: ") #Discord Bot Token
 
 client = commands.Bot(command_prefix="<") #Decides which command prefix to use
@@ -18,8 +17,17 @@ async def hello(ctx):
     await ctx.send("Go Fuck yourself")
 
 #Help command that will list all of the available commands
-@client.command()
+@client.command(pass_context=True)
 async def help(ctx):
-    await ctx.send(help_file.read())
+    author = ctx.messege.author
+
+    embed = discord.Embed(
+        colour = discord.Colour.orange()
+    )
+
+    embed.set_author(name='Help')
+    embed.add_field(name='<hello', value='Says hi', inline=False)
+
+    await client.send_messege(author, embed=embed)
 
 client.run(bot_token)
