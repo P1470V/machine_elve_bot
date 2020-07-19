@@ -4,7 +4,7 @@ from discord.ext import commands
 help_file = open("help.txt", "r")
 bot_token = input("Bot Token: ") #Discord Bot Token
 
-client = commands.Bot(command_prefix="<")
+client = commands.Bot(command_prefix="<") #Decides which command prefix to use
 client.remove_command('help') #removes default help command
 
 #Bot says that it's ready when it starts up
@@ -21,5 +21,7 @@ async def hello(ctx):
 @client.command()
 async def help(ctx):
     await ctx.send(help_file.read())
+
+
 
 client.run(bot_token)
